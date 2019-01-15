@@ -4,13 +4,16 @@ import HomeContainer from './HomeContainer';
 
  class Home extends HomeContainer{
    constructor( props ){
+
      super( props );
      this.state={
        forName:"",
        lastName:"",
        linkGit:"",
        items:[]
+
      }
+     this.onChange=this.onChange.bind(this)
     }
 
   addStudent(event)
@@ -23,13 +26,12 @@ import HomeContainer from './HomeContainer';
      items:[...this.state.items, this.state.forName, this.state.lastName, this.state.linkGit]
     });
   }
-  onChange(event)
+  onChange(event, name)
   {
+ 
    this.setState(
      {
-     forName:event.target.value,
-     lastName:event.target.value,
-     linkGit:event.target.value
+    [name]:event.target.value
    })
   }
 
@@ -62,15 +64,17 @@ render() {
         </label>
         <input type="text" 
         value={this.state.forName} 
-        onChange={this.onChange.bind(this)} 
+        onChange={(event) => this.onChange(event, 'forName')} 
         placeholder="Lassal" 
         id="firstname"/>
         <label>
           Prénom
         </label>
         <input type="text"
-         value={this.state.LastName}
-          onChange={this.onChange.bind(this)}
+         value={this.state.lastName}
+          onChange = {
+            (event) => this.onChange(event, 'lastName')
+          }
            placeholder="Jean" 
            id="lastname"/>
         <label>
@@ -78,7 +82,9 @@ render() {
         </label>
         <input type="text"
          value={this.state.linkGit} 
-         onChange={this.onChange.bind(this)} 
+         onChange = {
+           (event) => this.onChange(event, 'linkGit')
+         }
          placeholder="Link" id="link"/>
         <button 
         onClick={this.addStudent.bind(this)}
