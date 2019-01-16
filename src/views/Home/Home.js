@@ -14,6 +14,7 @@ import HomeContainer from './HomeContainer';
 
      }
      this.onChange=this.onChange.bind(this)
+     this.deleteUser = this.deleteUser.bind(this)
     }
 
   addStudent(event)
@@ -34,6 +35,16 @@ import HomeContainer from './HomeContainer';
     [name]:event.target.value
    })
   }
+  deleteUser(event){
+   event.preventDefault();
+   const array = this.state.items;
+   const index = array.indexOf(event.target.value);
+   array.splice(index, 1);
+   this.setState({
+     items:array
+   })
+
+  }
 
   renderStudent(){
     return this.state.items.map
@@ -45,6 +56,9 @@ import HomeContainer from './HomeContainer';
           {
             item
           }
+          < button onClick = {
+            this.deleteUser.bind(this)
+          } >X</button>
           </div>
         )
       }
