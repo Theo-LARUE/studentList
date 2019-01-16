@@ -15,6 +15,7 @@ import HomeContainer from './HomeContainer';
      }
      this.onChange=this.onChange.bind(this)
      this.deleteUser = this.deleteUser.bind(this)
+     this.editUser = this.editUser.bind(this)
     }
 
   addStudent(event)
@@ -40,9 +41,7 @@ import HomeContainer from './HomeContainer';
   onChange(event, name)
   {
  
-   this.setState(
-     {
-    [name]:event.target.value
+   this.setState({[name]:event.target.value
    })
   }
   deleteUser(event){
@@ -53,7 +52,29 @@ import HomeContainer from './HomeContainer';
    this.setState({
      items:array
    })
+  }
 
+  editUser(event, name) {
+    event.preventDefault();
+  }
+
+  renderEdit() {
+  return (
+    <section>
+        <h1>Edit your informations</h1>
+        <form id="form">
+          <fieldset>
+            <label> Nom </label>
+            <input type="text" value={this.state.forName} onChange={(event) => this.editUser(event, 'forName')} placeholder="Lassal" id="Edit_firstname"/>
+            <label> Prénom </label>
+            <input type="text" value={this.state.lastName} onChange = { (event) => this.editUser(event, 'lastName') } placeholder="Jean" id="Edit_lastname"/>
+            <label> Lien Github </label>
+            <input type="text" value={this.state.linkGit} onChange = { (event) => this.editUser(event, 'linkGit') } placeholder="Link" id="Edit_link"/>
+            <button onClick={this.editUser.bind(this)} type="button"> Editing </button>
+          </fieldset>
+        </form>
+    </section>
+   );
   }
 
   renderStudent(){
@@ -63,71 +84,61 @@ import HomeContainer from './HomeContainer';
       {
         return (
           <div key={item}>
-            < div > {
-              item.forName
-            } </div>
-            < div > {
-              item.lastName
-            } </div>
+            <div> {item.forName} </div>
+            <div> {item.lastName} </div>
+            <div> {item.linkGit } </div>
 
-            < div > {
-              item.linkGit
-            } </div>
-
-
-          
-          < button onClick = {
-            this.deleteUser.bind(this)
-          } >X</button>
+            <button onClick = {this.deleteUser.bind(this)} >Delete</button>
+            <button onClick = {this.editUser.bind(this)} >Edit</button>
+            <div>{this.renderEdit()}</div>
           </div>
         )
       }
     )
   }
 
-
 render() {
   return (
-<section>
-    <h1>Student List</h1>
-    <h1>Insert your informations</h1>
-    <form id="form">
-      <fieldset>
-        <label>
-          Nom
-        </label>
-        <input type="text" 
-        value={this.state.forName} 
-        onChange={(event) => this.onChange(event, 'forName')} 
-        placeholder="Lassal" 
-        id="firstname"/>
-        <label>
-          Prénom
-        </label>
-        <input type="text"
-         value={this.state.lastName}
+    <section>
+      <h1>Student List</h1>
+      <h1>Insert your informations</h1>
+      <form id="form">
+        <fieldset>
+          <label>
+            Nom
+          </label>
+          <input type="text" 
+          value={this.state.forName} 
+          onChange={(event) => this.onChange(event, 'forName')} 
+          placeholder="Lassal" 
+          id="firstname"/>
+          <label>
+            Prénom
+          </label>
+          <input type="text"
+          value={this.state.lastName}
+            onChange = {
+              (event) => this.onChange(event, 'lastName')
+            }
+            placeholder="Jean" 
+            id="lastname"/>
+          <label>
+            Lien Github
+          </label>
+          <input type="text"
+          value={this.state.linkGit} 
           onChange = {
-            (event) => this.onChange(event, 'lastName')
+            (event) => this.onChange(event, 'linkGit')
           }
-           placeholder="Jean" 
-           id="lastname"/>
-        <label>
-          Lien Github
-        </label>
-        <input type="text"
-         value={this.state.linkGit} 
-         onChange = {
-           (event) => this.onChange(event, 'linkGit')
-         }
-         placeholder="Link" id="link"/>
-        <button 
-        onClick={this.addStudent.bind(this)}
-         type="button">
-         send
-         </button>
-      </fieldset>
-    </form>
-    <div>{this.renderStudent()}</div>
+          placeholder="Link" id="link"/>
+          <button 
+          onClick={this.addStudent.bind(this)}
+          type="button">
+          send
+          </button>
+        </fieldset>
+      </form>
+      <div>{this.renderStudent()}</div>
     </section>
   );
 
