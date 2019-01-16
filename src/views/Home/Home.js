@@ -20,11 +20,21 @@ import HomeContainer from './HomeContainer';
   addStudent(event)
   {
      event.preventDefault()
+
+     const { forName, lastName, linkGit } = this.state
+
      this.setState({
-     forName: "",
-     lastName: "",
-     linkGit: "",
-     items:[...this.state.items, this.state.forName, this.state.lastName, this.state.linkGit]
+      forName: "",
+      lastName: "",
+      linkGit: "",
+      items:[
+        ...this.state.items,
+        {
+          forName,
+          lastName,
+          linkGit
+        }
+      ]
     });
   }
   onChange(event, name)
@@ -53,9 +63,19 @@ import HomeContainer from './HomeContainer';
       {
         return (
           <div key={item}>
-          {
-            item
-          }
+            < div > {
+              item.forName
+            } </div>
+            < div > {
+              item.lastName
+            } </div>
+
+            < div > {
+              item.linkGit
+            } </div>
+
+
+          
           < button onClick = {
             this.deleteUser.bind(this)
           } >X</button>
