@@ -1,5 +1,6 @@
 import React from 'react';
 import HomeContainer from './HomeContainer';
+import HomeStyle from '../../assets/style/Home.css';
 
 
  class Home extends HomeContainer{
@@ -57,8 +58,7 @@ import HomeContainer from './HomeContainer';
   }
 
   renderStudent(){
-    return this.state.items.map
-    (
+    return this.state.items.map(
       (item)=>
       {
         return (
