@@ -63,36 +63,23 @@ import HomeContainer from './HomeContainer';
       {
         return (
           <div key={item}>
-            < div > {
-              item.forName
-            } </div>
-            < div > {
-              item.lastName
-            } </div>
-
-            < div > {
-              item.linkGit
-            } </div>
-
-
-          
-          < button onClick = {
-            this.deleteUser.bind(this)
-          } >X</button>
+            <li>
+              <span>{item.forName}</span> - <span>{item.lastName}</span> - <a href="#" target="_blank">{item.linkGit} </a> 
+              <button onClick = { this.deleteUser.bind(this) } >X</button>
+            </li>
           </div>
         )
       }
     )
   }
 
-
 render() {
   return (
 <section>
     <h1>Student List</h1>
-    <h1>Insert your informations</h1>
     <form id="form">
       <fieldset>
+        <legend>Insert your informations</legend> 
         <label>
           Nom
         </label>
