@@ -14,7 +14,6 @@ import HomeContainer from './HomeContainer';
      }
      
      this.onChange=this.onChange.bind(this)
-     this.editUser = this.editUser.bind(this)
      this.deleteUser = this.deleteUser.bind(this)
     }
 
@@ -52,27 +51,6 @@ import HomeContainer from './HomeContainer';
    })
   }
 
-  editUser(event) {
-    event.preventDefault();
-    return (
-      <section>
-        <h1>Edit your informations</h1>
-        <form id="form">
-          <fieldset>
-            <label> Nom </label>
-            <input type="text" value={this.state.forName} onChange={ () => this.onChange() } placeholder="Lassal" id="Edit_firstname"/>
-            <label> Prénom </label>
-            <input type="text" value={this.state.lastName} onChange = { () => this.onChange() } placeholder="Jean" id="Edit_lastname"/>
-            <label> Lien Github </label>
-            <input type="text" value={this.state.linkGit} onChange = { () => this.onChange() } placeholder="Link" id="Edit_link"/>
-            {/* <button onClick={this.editUser.bind(this)} type="button"> Editing </button> */}
-            <button type="button"> Editing </button>
-          </fieldset>
-        </form>
-      </section>
-    )
-  }
-
   renderStudent(){
     return this.state.items.map
     (
@@ -84,7 +62,6 @@ import HomeContainer from './HomeContainer';
             <div> {item.lastName} </div>
             <div> {item.linkGit} </div>
             <button onClick = {this.deleteUser.bind(this)} >Delete</button>
-            <button onClick = {this.editUser.bind(this)} >Edit</button>
           </div>
         )
       }
