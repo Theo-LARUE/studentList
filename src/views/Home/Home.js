@@ -88,50 +88,48 @@ import HomeStyle from '../../assets/style/Home.css';
 
 render() {
   return (
-<section>
-    <h1>Student List</h1>
-    <h1>Insert your informations</h1>
-    <form id="form">
-      <fieldset>
-        <label>
-          Nom
-        </label>
-        <input type="text" 
-        value={this.state.forName} 
-        onChange={(event) => this.onChange(event, 'forName')} 
-        placeholder="Lassal" 
-        id="firstname"/>
-        <label>
-          Prénom
-        </label>
-        <input type="text"
-         value={this.state.lastName}
-          onChange = {
-            (event) => this.onChange(event, 'lastName')
-          }
-           placeholder="Jean" 
-           id="lastname"/>
-        <label>
-          Lien Github
-        </label>
-        <input type="text"
-         value={this.state.linkGit} 
-         onChange = {
-           (event) => this.onChange(event, 'linkGit')
-         }
-         placeholder="Link" id="link"/>
-        <button 
-        onClick={this.addStudent.bind(this)}
-         type="button">
-         send
-         </button>
-      </fieldset>
-    </form>
-    <div>{this.renderStudent()}</div>
-    </section>
-  );
-
-}
+    <section>
+    {/* <img className="ovalBackground" src="../../assets/img/Oval.jpg"></img> */}
+      <h1 className="mainTitle">Welcome to Giteck</h1>
+      <h3>Insert your informations</h3>
+        <form className="formContainer" id="form">
+          <label>Nom</label>
+          <input
+            type="text" 
+            value={this.state.forName} 
+            onChange={(event) => this.onChange(event, 'forName')} 
+            placeholder="Lassal" 
+            id="firstname"
+          />
+          <label>Prénom</label>
+          <input
+            type="text"
+            value={this.state.lastName}
+            onChange = {
+              (event) => this.onChange(event, 'lastName')
+            }
+            placeholder="Jean" 
+            id="lastname"
+          />
+          <label>Phone</label>
+          <input type="number"/>
+          <label>Mail</label>
+          <input type="text"/>
+          <label>Lien Github</label>
+          <input type="text"
+            value={this.state.linkGit} 
+            onChange = {
+              (event) => this.onChange(event, 'linkGit')
+            }
+            placeholder="Link" id="link"/>
+          <button onClick={this.addStudent.bind(this)} type="button">
+            Send
+          </button>
+        </form>
+        <div>{this.renderStudent()}</div>
+      </section>
+    )
+  }
  }
 
 export default Home;

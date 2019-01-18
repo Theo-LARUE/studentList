@@ -2,3 +2,29 @@ body {
   background-image: url(./assets/img/gradient.jpg);
   background-size: cover;
 }
+
+.formContainer {
+  position: absolute;
+  background: white;
+  width: 800px;
+  height: 330px;
+  border-radius: 30px;
+  padding: 20px;
+}
+
+.mainTitle {
+  font-size: 44px;
+  color: white; 
+  
+}
+
+.mainContainer {
+  padding: 150px 0 0 470px; 
+}
+
+.ovalBackground {
+  position: relative;
+  right: 0; 
+  top: 0;
+
+}
